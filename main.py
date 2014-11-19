@@ -20,6 +20,7 @@ import persona
 DEFAULT_API_VERSION = 'v1'
 NUMBER_OF_FEED_ITEMS = 10
 
+
 @app.route('/api/<version>/account/login/', methods=['POST'])
 def login(version=DEFAULT_API_VERSION):
     assertion = request.form.get('assertion')
@@ -40,6 +41,7 @@ def login(version=DEFAULT_API_VERSION):
         'settings': {
             'display_name': email.split('@')[0],
             'email': email,
+            'enable_recommendations': True,
             'region': 'us',
         },
         'permissions': {},
@@ -212,7 +214,9 @@ def app_stats(version=DEFAULT_API_VERSION, id=None):
 def consumer_info(version=DEFAULT_API_VERSION):
     return {
         'region': 'us',
-        'apps': defaults._user_apps()
+        'apps': defaults._user_apps(),
+        # New users default to recommendations enabled.
+        'enable_recommendations': True
     }
 
 
