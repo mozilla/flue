@@ -36,6 +36,8 @@ def review_generator(**kw):
         yield factory.review(**kw)
 
 
+@app.route('/api/<version>/account/fxa-login/', methods=['POST'],
+           endpoint='fxa-login')
 @app.route('/api/<version>/account/login/', methods=['POST'])
 def login(version=DEFAULT_API_VERSION):
     """TODO: update for FxA."""
