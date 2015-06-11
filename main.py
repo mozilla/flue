@@ -241,7 +241,13 @@ def newsletter(version=DEFAULT_API_VERSION, id=None):
 
 @app.route('/api/<version>/services/config/site/')
 def site_config(version=DEFAULT_API_VERSION):
-    return {'waffle': {}}
+    return {
+        'fxa': {
+            'fxa_auth_state': 'bfd87ff4410049c0a8db9807661acaf3',
+            'fxa_auth_url': 'https://oauth-stable.dev.lcip.org/v1/authorization?scope=profile&state=bfd87ff4410049c0a8db9807661acaf3&client_id=11c73e2d918ae5d9',
+        },
+        'waffle': {}
+    }
 
 
 @app.route('/api/<version>/services/region/')
